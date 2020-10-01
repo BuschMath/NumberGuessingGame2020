@@ -4,6 +4,8 @@
 
 using namespace std;
 
+void SuccessMessage();
+
 int main()
 {
 	srand(time(NULL));
@@ -13,14 +15,42 @@ int main()
 
 	cout << rNum;
 
-	cout << "Random number guessing game!\n" << "Please enter a number between 1 and 10 to guess the random number: ";
+	cout << "\nRandom number guessing game!\n" << "Please enter a number between 1 and 10 to as your first";
+	cout << " guess of the random number : ";
 
 	cin >> guess;
 
-	if (guess == rNum)
-		cout << "Congrats, you guessed correctly.\n";
+	if (guess != rNum)
+	{
+		cout << "\n\nIncorrect, please enter your second guess between 1 and 10: ";
+
+		cin >> guess;
+
+		if (guess != rNum)
+		{
+			cout << "\n\nIncorrect, please enter your third guess between 1 and 10: ";
+
+			cin >> guess;
+
+			if (guess != rNum)
+			{
+				cout << "\n\nIncorrect, you lose.";
+
+				return 0;
+			}
+			else
+				SuccessMessage();
+		}
+		else
+			SuccessMessage();
+	}
 	else
-		cout << "Incorrect, you lose.\n";
+		SuccessMessage();
 
 	return 0;
+}
+
+void SuccessMessage()
+{
+	cout << "Congrats, you guessed correctly.\n";
 }
